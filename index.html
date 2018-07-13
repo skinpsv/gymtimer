@@ -7,17 +7,28 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
     <title>Hello, world!</title>
   </head>
-  <body>
- <div class="row">
-<div class="col-md-4 offset-md-4">test</div>
+  <body onload="foo()">
+<div class="container-fluid">
+    <div class="row align-items-center">
+<div class="col-xs-4 offset-xs-4"><i class="material-icons md-36">face</i> </div>
+<div id="nume" class="col-xs-2 accountNume"></div>
+
 </div>
- 
 
+</div>
+<div><i id="plus" class="material-icons md-96 perfect-centering">add_circle</i></div>
+<div class="fixed-bottom container-fluid" id="footer">
 
-
+  <div class="row justify-content-center">
+<div class="col-xs-1"><button type="button" class="btn btn-lg btn-outline-primary" >60 sec</button></div>
+<div class="col-xs-1 "><button type="button" class="btn btn-lg btn-outline-primary active" >90 sec</button></div>
+<div class="col-xs-1 "><button type="button" class="btn btn-lg btn-outline-primary " >120 sec</button></div>
+</div>
+</div>
  
 
     <!-- Optional JavaScript -->
@@ -25,5 +36,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
   </body>
 </html>
