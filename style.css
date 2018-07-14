@@ -1,0 +1,28 @@
+.material-icons.md-36 { 
+    font-size: 46px; 
+}
+.accountNume {
+    color: green;
+    margin-left: 20px;
+}
+body {
+    margin: 20px 0px 40px 20px;
+}
+.perfect-centering {
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+  }
+  .material-icons.md-96 { 
+    font-size: 196px; 
+}
+#footer {
+    margin-bottom: 5%;
+}
+.perfect-centering2 {
+    position: absolute;
+    top: 70%;
+    left:50%;
+    transform: translate(-50%,-50%);
+  }
