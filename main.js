@@ -1,7 +1,8 @@
 const nume = "John";
-const prenume = "Smith"
+const prenume = "Smith";
 var interval = 499;
 var timer4 = document.getElementById('timer');
+let default2 = 120;
 const view = {
     show : function(target){
         target.style.display = 'block';
@@ -9,44 +10,56 @@ const view = {
     hide : function(target){
         target.style.display = 'none';
     },
-    schimbaBg : function(){
-        if(document.body.style.backgroundColor == "yellow"){
-            document.body.style.backgroundColor = "blue"
-        } else {
-            document.body.style.backgroundColor = "yellow";
+    schimbaBg : function(){document.body.style.backgroundColor == "yellow"? document.body.style.backgroundColor = "blue":document.body.style.backgroundColor = "yellow";
         }
+};
+
+var butoane = {
+    startTimer90: ()=>{
+        default2 = 90;
+        sec90.classList.add('active');
+        //this.startTimer
+    },
+    startTimer120: ()=>{
+        default2 = 120;
+        sec120.classList.add('active');
+        // this.startTimer
+    },
+    startTimerCustom: (x)=>{
+        default2 = x;
+        this.startTimer
+    },
+    startTimer60: ()=>{
+        default2 = 60;
+        sec60.classList.add('active');
+        // this.startTimer
+    },
+
+    startTimer: ()=>
+    {
+    view.hide(butonPlus);
+    view.show(timer4);
+    timer4.innerHTML=interval;
+    view.show(butonStop);
+    view.schimbaBg();
+    timerO.counter();
     }
 }
-
-// const timerO = {
-//     counter : function(x){
-//         setInterval(function(){
-//             x--;
-//             document.getElementById('timer').innerHTML = x;
-//         }, 1000);
-//     }
-// }
-
-// var timer1 = function(x){
-//     setInterval(function(){
-//         x--;
-//         document.getElementById('timer').innerHTML = x;
-//     }, 1000);
-// }
-
 
 console.log(interval);
 var timerO = {
     interval : 500,
     counter : function(){   
+        interval = default2;
         this.cisc = setInterval(function(){
+        //interval = default2;
         interval--;
         document.getElementById('timer').innerHTML = interval;
         }
         , 1000);
     },
-    stopCount: function(){clearInterval(this.cisc);
-    interval = 500;}
+    stopCount: function(w){clearInterval(this.cisc);
+    interval = w;}
 }
 
 bgColor = "yellow";
@@ -72,18 +85,26 @@ function changeBg(event){
     
     view.hide(event.target);
     view.show(document.getElementById('timer'));
-    timer4.innerHTML=interval;
+    timer4.innerHTML=default2;
     view.show(butonStop);
     view.schimbaBg();
-    //var interval = 400;
     timerO.counter();
 }
 function cocos(event){
     view.hide(event.target);
-    //view.hide(document.getElementById('timer'));
+    view.hide(document.getElementById('timer'));
     console.log(event.target);
     view.show(butonPlus);
     view.schimbaBg();
-    // clearInterval(timerO.counter())
-    timerO.stopCount();
+    timerO.stopCount(default2);
+    element.forEach((buton)=> {buton.classList.remove("active")});
 }
+const sec120 = document.getElementById('sec120');
+const sec90 = document.getElementById('sec90');
+const sec60 = document.getElementById('sec60');
+
+sec90.addEventListener('click', butoane.startTimer90, false);
+sec60.addEventListener('click', butoane.startTimer60, false);
+sec120.addEventListener('click', butoane.startTimer120, false);
+var element = document.querySelectorAll(".selector");
+console.log(element);
