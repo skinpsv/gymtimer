@@ -30,7 +30,7 @@ var butoane = {
         this.startTimer
     },
     startTimer60: ()=>{
-        default2 = 60;
+        default2 = 6;
         sec60.classList.add('active');
         // this.startTimer
     },
@@ -53,9 +53,12 @@ var timerO = {
         interval = default2;
         this.cisc = setInterval(function(){
         //interval = default2;
-        interval--;
+        if(interval>0){interval--;
         document.getElementById('timer').innerHTML = interval;
-        }
+        }else{
+            view.schimbaBg();
+            this.stopCount();
+        }}
         , 1000);
     },
     stopCount: function(w){clearInterval(this.cisc);
