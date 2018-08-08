@@ -10,7 +10,7 @@ const view = {
     hide : function(target){
         target.style.display = 'none';
     },
-    schimbaBg : function(){document.body.style.backgroundColor == "yellow"? document.body.style.backgroundColor = "blue":document.body.style.backgroundColor = "yellow";
+    schimbaBg : function(){document.body.style.backgroundColor == "white"? document.body.style.backgroundColor = "#7db9e8" :document.body.style.backgroundColor = "white";
         }
 };
 
@@ -18,6 +18,7 @@ var butoane = {
     startTimer90: ()=>{
         default2 = 90;
         sec90.classList.add('active');
+        
         //this.startTimer
     },
     startTimer120: ()=>{
@@ -30,20 +31,20 @@ var butoane = {
         this.startTimer
     },
     startTimer60: ()=>{
-        default2 = 6;
+        default2 = 60;
         sec60.classList.add('active');
         // this.startTimer
     },
 
     startTimer: ()=>
-    {
-    view.hide(butonPlus);
-    view.show(timer4);
-    timer4.innerHTML=interval;
-    view.show(butonStop);
-    view.schimbaBg();
-    timerO.counter();
-    }
+        {
+            view.hide(butonPlus);
+            view.show(timer4);
+            timer4.innerHTML=interval;
+            view.show(butonStop);
+            view.schimbaBg();
+            timerO.counter();
+        }
 }
 
 console.log(interval);
@@ -53,19 +54,29 @@ var timerO = {
         interval = default2;
         this.cisc = setInterval(function(){
         //interval = default2;
-        if(interval>0){interval--;
+        if(interval>0){
+        interval--;
+        
+        
         document.getElementById('timer').innerHTML = interval;
         }else{
-            view.schimbaBg();
-            this.stopCount();
+            //view.schimbaBg();
+            //clearInterval(this.cisc);
+            timerO.stopCount();
+            vibratie();
+            
         }}
         , 1000);
     },
-    stopCount: function(w){clearInterval(this.cisc);
-    interval = w;}
+    stopCount: function(w){
+        clearInterval(this.cisc);
+        view.schimbaBg();
+        interval = w;
+        //vibratie();
+    }
 }
 
-bgColor = "yellow";
+bgColor = "white";
 document.body.style.backgroundColor = bgColor;
 
 function foo(){
@@ -106,8 +117,29 @@ const sec120 = document.getElementById('sec120');
 const sec90 = document.getElementById('sec90');
 const sec60 = document.getElementById('sec60');
 
-sec90.addEventListener('click', butoane.startTimer90, false);
+
 sec60.addEventListener('click', butoane.startTimer60, false);
 sec120.addEventListener('click', butoane.startTimer120, false);
 var element = document.querySelectorAll(".selector");
 console.log(element);
+
+function alertDismissed(){
+    console.log ('tete');}
+function test222(){
+    if(!navigator.notification){
+        window.alert('Nu functioneaza pluginul cordova');
+    }
+    navigator.notification.alert(
+        'You are the winner!',  // message
+        butoane.startTimer90,         // callback
+        'Game Over',            // title
+        'Done'                  // buttonName
+    );
+    navigator.vibrate([200, 300, 400, 500, 1000]);
+}
+function vibratie(){
+    navigator.vibrate([200, 300, 400, 500, 1000]);
+    console.log('ajunge aici');
+}
+
+sec90.addEventListener('click', testbutoane.startTimer90, false);
