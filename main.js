@@ -49,6 +49,8 @@ var butoane = {
             view.show(butonStop);
             document.body.style.backgroundColor = "#7db9e8";
             timerO.counter();
+            cordova.plugins.backgroundMode.enable();
+            //window.plugin.backgroundMode.enable();
         }
 }
 
@@ -84,10 +86,11 @@ var timerO = {
         view.hide(document.getElementById('timer'));
         element.forEach((buton)=> { buton.classList.remove("active")});
         butonActiv();
+        cordova.plugins.backgroundMode.disable();
     }
 }
 
-bgColor = "white";
+let bgColor = "white";
 document.body.style.backgroundColor = bgColor;
 
 function foo(){
@@ -135,7 +138,7 @@ sec60.addEventListener('click', butoane.startTimer60, false);
 sec120.addEventListener('click', butoane.startTimer120, false);
 var element = document.querySelectorAll(".selector");
 console.log(element);
-
+cordova.plugins.backgroundMode.overrideBackButton();
 
 
 function vibratie(){
