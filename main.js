@@ -1,5 +1,5 @@
-const nume = "John";
-const prenume = "Smith";
+const nume = "BODY UNDER CONSTRUCTION";
+const prenume = "Mind on a mission";
 var interval = 499;
 var timer4 = document.getElementById('timer');
 let default2 = 120;
@@ -18,12 +18,15 @@ var butoane = {
     startTimer90: ()=>{
         default2 = 90;
         sec90.classList.add('active');
-        
+        sec120.classList.remove('active');
+        sec60.classList.remove('active');
         //this.startTimer
     },
     startTimer120: ()=>{
         default2 = 120;
+        sec90.classList.remove('active');
         sec120.classList.add('active');
+        sec60.classList.remove('active');
         // this.startTimer
     },
     startTimerCustom: (x)=>{
@@ -32,6 +35,8 @@ var butoane = {
     },
     startTimer60: ()=>{
         default2 = 60;
+        sec90.classList.remove('active');
+        sec120.classList.remove('active');
         sec60.classList.add('active');
         // this.startTimer
     },
@@ -42,7 +47,7 @@ var butoane = {
             view.show(timer4);
             timer4.innerHTML=interval;
             view.show(butonStop);
-            view.schimbaBg();
+            document.body.style.backgroundColor = "#7db9e8";
             timerO.counter();
         }
 }
@@ -62,7 +67,7 @@ var timerO = {
         }else{
             //view.schimbaBg();
             //clearInterval(this.cisc);
-            timerO.stopCount();
+            timerO.stopCount(default2);
             vibratie();
             
         }}
@@ -70,9 +75,15 @@ var timerO = {
     },
     stopCount: function(w){
         clearInterval(this.cisc);
-        view.schimbaBg();
-        interval = w;
+        //view.schimbaBg();
+        view.show(butonPlus);
+        document.body.style.backgroundColor = "white";
         //vibratie();
+        interval = w;
+        view.hide(butonStop);
+        view.hide(document.getElementById('timer'));
+        element.forEach((buton)=> { buton.classList.remove("active")});
+        butonActiv();
     }
 }
 
@@ -86,7 +97,7 @@ function foo(){
     let compunere = nume.toUpperCase();
     let compunere2 = prenume.toUpperCase();
 
-    accountNume.innerHTML = compunere + ' ' + compunere2;
+    accountNume.innerHTML = compunere + '<br> ' + compunere2;
     //.innerHTML = nume+' '+prenume;
   };
 const butonPlus = document.getElementById('plus');
@@ -108,38 +119,37 @@ function cocos(event){
     view.hide(event.target);
     view.hide(document.getElementById('timer'));
     console.log(event.target);
-    view.show(butonPlus);
-    view.schimbaBg();
+    //view.show(butonPlus);
+    
     timerO.stopCount(default2);
-    element.forEach((buton)=> {buton.classList.remove("active")});
+
+    
+    interval = w;
 }
 const sec120 = document.getElementById('sec120');
 const sec90 = document.getElementById('sec90');
 const sec60 = document.getElementById('sec60');
 
-
+sec90.addEventListener('click', butoane.startTimer90, false);
 sec60.addEventListener('click', butoane.startTimer60, false);
 sec120.addEventListener('click', butoane.startTimer120, false);
 var element = document.querySelectorAll(".selector");
 console.log(element);
 
-function alertDismissed(){
-    console.log ('tete');}
-function test222(){
-    if(!navigator.notification){
-        window.alert('Nu functioneaza pluginul cordova');
-    }
-    navigator.notification.alert(
-        'You are the winner!',  // message
-        butoane.startTimer90,         // callback
-        'Game Over',            // title
-        'Done'                  // buttonName
-    );
-    navigator.vibrate([200, 300, 400, 500, 1000]);
-}
+
+
 function vibratie(){
-    navigator.vibrate([200, 300, 400, 500, 1000]);
+    navigator.vibrate([500, 500, 500, 500, 1000]);
     console.log('ajunge aici');
 }
 
-sec90.addEventListener('click', testbutoane.startTimer90, false);
+function butonActiv(){
+    if(default2==90){
+        sec90.classList.add("active");
+    }else if(default2==60){
+        sec60.classList.add("active");
+    }else{
+        sec60.classList.add("active");
+    }
+}
+
